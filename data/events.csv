@@ -1,0 +1,52 @@
+event_id,timestamp,actor_id,action,item_id,condition_report,note
+e001,2026-06-01T09:05,s101,CHECKOUT,cam-001,,film project
+e002,2026-06-01T09:07,s102,CHECKOUT,cam-001,,duplicate camera request
+e003,2026-06-01T09:10,s201,RETURN,cam-002,good,returned from overnight loan
+e004,2026-06-01T09:12,staff1,RESTORE,cam-003,good,maintenance completed
+e005,2026-06-01T09:13,s103,CHECKOUT,cam-003,,borrow after restore
+e006,2026-06-01T09:15,s202,RETURN,lap-002,damaged,screen flickers
+e007,2026-06-01T09:20,s104,CHECKOUT,lap-002,,tries damaged laptop
+e008,2026-06-01T09:25,staff2,RESTORE,lap-002,worn,repaired display cable
+e009,2026-06-01T09:30,s104,CHECKOUT,lap-002,,successful laptop checkout
+e010,2026-06-01T09:35,s104,CHECKOUT,mic-001,,audio lab
+e011,2026-06-01T09:40,s104,CHECKOUT,trip-001,,third item attempt
+e012,2026-06-01T09:45,s203,RETURN,mic-002,unusable,dropped microphone
+e013,2026-06-01T09:50,staff1,RESTORE,mic-002,good,replaced capsule
+e014,2026-06-01T09:55,s105,CHECKOUT,mic-002,,podcast team
+e015,2026-06-01T10:00,s106,RETURN,tab-001,good,return without checkout
+e016,2026-06-01T10:05,staff2,MARK_MAINTENANCE,tab-001,scratched,screen inspection
+e017,2026-06-01T10:10,s107,CHECKOUT,tab-001,,student tries maintenance tablet
+e018,2026-06-01T10:15,staff2,RESTORE,tab-001,good,inspection cleared
+e019,2026-06-01T10:20,s107,CHECKOUT,tab-001,,checkout after restore
+e020,2026-06-01T10:25,staff3,STAFF_RETURN,tab-001,scratched,student left early
+e021,2026-06-01T10:30,s108,CHECKOUT,light-001,,lighting kit request
+e022,2026-06-01T10:35,s109,CHECKOUT,trip-002,,tripod checkout
+e023,2026-06-01T10:40,s109,RETURN,trip-002,new,claims better than before
+e024,2026-06-01T10:45,staff1,MARK_MAINTENANCE,trip-002,worn,leg clamp check
+e025,2026-06-01T10:50,staff1,RESTORE,trip-002,good,clamp fixed
+e026,2026-06-01T10:55,s110,CHECKOUT,trip-002,,checkout restored tripod
+e027,2026-06-01T11:00,s101,RETURN,cam-001,scratched,lens cap missing
+e028,2026-06-01T11:05,s111,CHECKOUT,cam-001,,new borrower
+e029,2026-06-01T11:10,staff4,MARK_MAINTENANCE,cam-001,damaged,staff tries while checked out
+e030,2026-06-01T11:15,staff4,STAFF_RETURN,cam-001,damaged,borrower unreachable
+e031,2026-06-01T11:20,staff4,RESTORE,cam-001,worn,cleaned lens
+e032,2026-06-01T11:25,s112,CHECKOUT,cam-001,,final camera checkout
+e033,2026-06-01T11:30,staff1,RESTORE,tab-002,good,tablet repaired
+e034,2026-06-01T11:35,s113,CHECKOUT,tab-002,,tablet checkout
+e035,2026-06-01T11:36,s113,RETURN,tab-002,unknown_condition,typed wrong condition
+e036,2026-06-01T11:40,s114,HOLD,lap-001,,invalid action
+e037,2026-06-01T11:45,staff1,MARK_MAINTENANCE,ghost-999,damaged,unknown item
+e038,2026-06-01T11:50,s115,CHECKOUT,lap-001,,laptop borrow
+e039,2026-06-01T11:55,s115,CHECKOUT,lap-003,,second laptop borrow
+e040,2026-06-01T12:00,s115,CHECKOUT,mic-001,,limit reached attempt
+e041,2026-06-01T12:05,staff5,STAFF_RETURN,lap-003,worn,returned at desk
+e042,2026-06-01T12:10,s115,CHECKOUT,mic-001,,now below limit
+e043,2026-06-01T08:55,s116,CHECKOUT,trip-001,,early event listed late
+e044,2026-06-01T12:15,s116,RETURN,trip-001,worn,return by early borrower
+e045,not-a-time,s117,CHECKOUT,lap-001,,bad timestamp
+e046,2026-06-01T12:20,staff5,RESTORE,lap-001,good,restore non-maintenance item
+e047,2026-06-01T12:25,s118,CHECKOUT,bad-001,,bad starting row item
+e048,2026-06-01T12:30,s119,CHECKOUT,cam-002,,camera after return
+e049,2026-06-01T12:35,s119,RETURN,cam-002,damaged,damaged on return
+e050,2026-06-01T12:40,staff2,RESTORE,cam-002,good,repaired camera
+e020,2026-06-01T12:45,s120,CHECKOUT,tab-002,,duplicate event id

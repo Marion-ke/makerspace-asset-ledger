@@ -1,0 +1,19 @@
+{
+  "max_active_items_per_student": 2,
+  "loan_hours_by_type": {
+    "camera": 48,
+    "laptop": 24,
+    "microphone": 72,
+    "tripod": 72,
+    "tablet": 24
+  },
+  "condition_rank": {
+    "new": 0,
+    "good": 1,
+    "worn": 2,
+    "scratched": 3,
+    "damaged": 4,
+    "unusable": 5
+  },
+  "auto_maintenance_condition_rank": 4
+}

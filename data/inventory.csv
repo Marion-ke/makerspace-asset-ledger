@@ -1,0 +1,16 @@
+item_id,item_type,condition,start_status,start_holder,start_due
+cam-001,camera,good,available,,
+cam-002,camera,worn,checked_out,s201,2026-06-01T15:00
+cam-003,camera,scratched,maintenance,,
+lap-001,laptop,good,available,,
+lap-002,laptop,worn,checked_out,s202,2026-06-01T12:00
+lap-003,laptop,good,available,,
+mic-001,microphone,good,available,,
+mic-002,microphone,scratched,checked_out,s203,2026-06-02T10:00
+trip-001,tripod,good,available,,
+trip-002,tripod,worn,available,,
+tab-001,tablet,good,available,,
+tab-002,tablet,scratched,maintenance,,
+light-001,lighting,good,available,,
+light-002,lighting,worn,checked_out,s204,2026-06-01T18:00
+bad-001,camera,good,checked_out,,
