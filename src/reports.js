@@ -2,9 +2,7 @@ const fs = require("fs");
 
 const { createObjectCsvWriter } = require("csv-writer");
 
-// =====================================================
 // GENERATE FINAL STATE CSV
-// =====================================================
 
 async function generateFinalStateReport(items) {
   // Ensure outputs folder exists
@@ -57,9 +55,8 @@ async function generateFinalStateReport(items) {
 
   console.log("final_state.csv generated");
 }
-// =====================================================
+
 // GENERATE ANOMALIES CSV
-// =====================================================
 
 async function generateAnomaliesReport(anomalies) {
   // Configure CSV writer
@@ -104,9 +101,8 @@ async function generateAnomaliesReport(anomalies) {
 
   console.log("anomalies.csv generated");
 }
-// =====================================================
+
 // GENERATE STUDENT SUMMARY CSV
-// =====================================================
 
 async function generateStudentSummaryReport(studentActiveItems) {
   // Configure CSV writer
@@ -141,21 +137,17 @@ async function generateStudentSummaryReport(studentActiveItems) {
 
   console.log("student_summary.csv generated");
 }
-// =====================================================
+
 // GENERATE RUN SUMMARY MARKDOWN
-// =====================================================
 
 async function generateRunSummaryReport(
   inventory,
   events,
   validEvents,
   anomalies,
-  items
+  items,
 ) {
-
-  const fs =
-    require("fs");
-
+  const fs = require("fs");
 
   // Count final statuses
   let available = 0;
@@ -164,9 +156,7 @@ async function generateRunSummaryReport(
 
   let maintenance = 0;
 
-
   for (const item of items.values()) {
-
     if (item.status === "available") {
       available++;
     }
@@ -179,7 +169,6 @@ async function generateRunSummaryReport(
       maintenance++;
     }
   }
-
 
   // Markdown content
   const markdown = `# Run Summary
@@ -198,17 +187,10 @@ async function generateRunSummaryReport(
 - maintenance: ${maintenance}
 `;
 
-
   // Write markdown file
-  fs.writeFileSync(
-    "outputs/run_summary.md",
-    markdown
-  );
+  fs.writeFileSync("outputs/run_summary.md", markdown);
 
-
-  console.log(
-    "run_summary.md generated"
-  );
+  console.log("run_summary.md generated");
 }
 module.exports = {
   generateFinalStateReport,

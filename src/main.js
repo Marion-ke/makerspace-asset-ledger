@@ -89,7 +89,8 @@ async function main() {
     console.log("Valid events:", validEvents.length);
 
     console.log("Anomalies found:", anomalies.length);
-    console.log(Array.from(items.values()));
+
+    console.log("Reports generated successfully.");
   } catch (error) {
     console.error(error);
   }

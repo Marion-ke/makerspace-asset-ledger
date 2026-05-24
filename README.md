@@ -93,3 +93,10 @@ TEST_PLAN.md
 Node.js
 csv-parser
 csv-writer
+
+# References
+
+- https://nodejs.org/docs
+- https://www.npmjs.com/package/csv-parser
+- https://www.npmjs.com/package/csv-writer
+- https://developer.mozilla.org/en-US/docs/Web/JavaScript

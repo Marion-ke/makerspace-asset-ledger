@@ -2,9 +2,9 @@ function processCheckout(event, items, anomalies, studentActiveItems, policy) {
   // Find item in system
   const item = items.get(event.item_id);
 
-  // =====================================================
+ 
   // UNKNOWN ITEM
-  // =====================================================
+  
 
   if (!item) {
     anomalies.push({
@@ -18,9 +18,9 @@ function processCheckout(event, items, anomalies, studentActiveItems, policy) {
     return;
   }
 
-  // =====================================================
+  
   // ITEM MUST BE AVAILABLE
-  // =====================================================
+  
 
   if (item.status !== "available") {
     anomalies.push({
@@ -34,9 +34,9 @@ function processCheckout(event, items, anomalies, studentActiveItems, policy) {
     return;
   }
 
-  // =====================================================
+  
   // ACTOR MUST BE STUDENT
-  // =====================================================
+  
 
   if (!event.actor_id.startsWith("s")) {
     anomalies.push({
@@ -50,9 +50,9 @@ function processCheckout(event, items, anomalies, studentActiveItems, policy) {
     return;
   }
 
-  // =====================================================
+  
   // ACTIVE ITEM LIMIT CHECK
-  // =====================================================
+  
 
   const activeCount = studentActiveItems.get(event.actor_id) || 0;
 
@@ -68,10 +68,9 @@ function processCheckout(event, items, anomalies, studentActiveItems, policy) {
     return;
   }
 
-  // =====================================================
+  
   // LOAN POLICY CHECK
-  // =====================================================
-
+  
   const loanHours = policy.loan_hours_by_type[item.item_type];
 
   if (!loanHours) {
@@ -86,17 +85,17 @@ function processCheckout(event, items, anomalies, studentActiveItems, policy) {
     return;
   }
 
-  // =====================================================
+  
   // CALCULATE DUE DATE
-  // =====================================================
+  
 
   const dueDate = new Date(event.parsedTimestamp);
 
   dueDate.setHours(dueDate.getHours() + loanHours);
 
-  // =====================================================
+  
   // UPDATE ITEM STATE
-  // =====================================================
+  
 
   item.status = "checked_out";
 
@@ -104,19 +103,18 @@ function processCheckout(event, items, anomalies, studentActiveItems, policy) {
 
   item.due = dueDate.toISOString();
 
-  // =====================================================
+ 
   // UPDATE STUDENT ACTIVE ITEM COUNT
-  // =====================================================
-
+  
   studentActiveItems.set(event.actor_id, activeCount + 1);
 }
 function processReturn(event, items, anomalies, studentActiveItems, policy) {
   // Find item
   const item = items.get(event.item_id);
 
-  // =====================================================
+  
   // UNKNOWN ITEM
-  // =====================================================
+  
 
   if (!item) {
     anomalies.push({
@@ -130,10 +128,9 @@ function processReturn(event, items, anomalies, studentActiveItems, policy) {
     return;
   }
 
-  // =====================================================
+  
   // ITEM MUST BE CHECKED OUT
-  // =====================================================
-
+  
   if (item.status !== "checked_out") {
     anomalies.push({
       severity: "error",
@@ -146,9 +143,9 @@ function processReturn(event, items, anomalies, studentActiveItems, policy) {
     return;
   }
 
-  // =====================================================
+ 
   // ACTOR MUST MATCH HOLDER
-  // =====================================================
+  
 
   if (item.holder !== event.actor_id) {
     anomalies.push({
@@ -163,9 +160,9 @@ function processReturn(event, items, anomalies, studentActiveItems, policy) {
     return;
   }
 
-  // =====================================================
+  
   // CONDITION HANDLING
-  // =====================================================
+  
 
   const oldCondition = item.condition;
 
@@ -219,10 +216,9 @@ function processReturn(event, items, anomalies, studentActiveItems, policy) {
     item.condition = newCondition;
   }
 
-  // =====================================================
+  
   // AUTO MAINTENANCE
-  // =====================================================
-
+ 
   const finalRank = conditionRanks[item.condition];
 
   if (finalRank >= policy.auto_maintenance_condition_rank) {
@@ -231,18 +227,17 @@ function processReturn(event, items, anomalies, studentActiveItems, policy) {
     item.status = "available";
   }
 
-  // =====================================================
+  
   // CLEAR HOLDER + DUE DATE
-  // =====================================================
+  
 
   item.holder = null;
 
   item.due = null;
 
-  // =====================================================
+  
   // UPDATE STUDENT ACTIVE COUNT
-  // =====================================================
-
+  
   const currentCount = studentActiveItems.get(event.actor_id) || 0;
 
   studentActiveItems.set(event.actor_id, Math.max(0, currentCount - 1));
@@ -257,9 +252,9 @@ function processStaffReturn(
   // Find item
   const item = items.get(event.item_id);
 
-  // =====================================================
+ 
   // UNKNOWN ITEM
-  // =====================================================
+  
 
   if (!item) {
     anomalies.push({
@@ -273,10 +268,9 @@ function processStaffReturn(
     return;
   }
 
-  // =====================================================
+  
   // ACTOR MUST BE STAFF
-  // =====================================================
-
+  
   if (!event.actor_id.startsWith("staff")) {
     anomalies.push({
       severity: "error",
@@ -289,9 +283,9 @@ function processStaffReturn(
     return;
   }
 
-  // =====================================================
+  
   // ITEM MUST BE CHECKED OUT
-  // =====================================================
+ 
 
   if (item.status !== "checked_out") {
     anomalies.push({
@@ -305,9 +299,9 @@ function processStaffReturn(
     return;
   }
 
-  // =====================================================
+  
   // STAFF RETURN WARNING
-  // =====================================================
+  
 
   anomalies.push({
     severity: "warning",
@@ -317,9 +311,9 @@ function processStaffReturn(
     message: "Staff returned item on behalf of student",
   });
 
-  // =====================================================
+  
   // CONDITION HANDLING
-  // =====================================================
+  
 
   const oldCondition = item.condition;
 
@@ -354,9 +348,9 @@ function processStaffReturn(
     item.condition = newCondition;
   }
 
-  // =====================================================
+  
   // AUTO MAINTENANCE
-  // =====================================================
+  
 
   const finalRank = conditionRanks[item.condition];
 
@@ -366,9 +360,9 @@ function processStaffReturn(
     item.status = "available";
   }
 
-  // =====================================================
+  
   // UPDATE STUDENT COUNT
-  // =====================================================
+ 
 
   const currentHolder = item.holder;
 
@@ -376,9 +370,8 @@ function processStaffReturn(
 
   studentActiveItems.set(currentHolder, Math.max(0, currentCount - 1));
 
-  // =====================================================
   // CLEAR HOLDER + DUE DATE
-  // =====================================================
+  
 
   item.holder = null;
 
@@ -387,10 +380,9 @@ function processStaffReturn(
 function processMarkMaintenance(event, items, anomalies) {
   const item = items.get(event.item_id);
 
-  // =====================================================
+ 
   // UNKNOWN ITEM
-  // =====================================================
-
+  
   if (!item) {
     anomalies.push({
       severity: "error",
@@ -403,10 +395,9 @@ function processMarkMaintenance(event, items, anomalies) {
     return;
   }
 
-  // =====================================================
+  
   // ACTOR MUST BE STAFF
-  // =====================================================
-
+ 
   if (!event.actor_id.startsWith("staff")) {
     anomalies.push({
       severity: "error",
@@ -419,10 +410,9 @@ function processMarkMaintenance(event, items, anomalies) {
     return;
   }
 
-  // =====================================================
+  
   // CANNOT MAINTAIN CHECKED OUT ITEM
-  // =====================================================
-
+  
   if (item.status === "checked_out") {
     anomalies.push({
       severity: "error",
@@ -435,18 +425,17 @@ function processMarkMaintenance(event, items, anomalies) {
     return;
   }
 
-  // =====================================================
+  
   // UPDATE STATUS
-  // =====================================================
-
+  
   item.status = "maintenance";
 }
 function processRestore(event, items, anomalies) {
   const item = items.get(event.item_id);
 
-  // =====================================================
+  
   // UNKNOWN ITEM
-  // =====================================================
+  
 
   if (!item) {
     anomalies.push({
@@ -460,9 +449,9 @@ function processRestore(event, items, anomalies) {
     return;
   }
 
-  // =====================================================
+  
   // ACTOR MUST BE STAFF
-  // =====================================================
+  
 
   if (!event.actor_id.startsWith("staff")) {
     anomalies.push({
@@ -476,10 +465,8 @@ function processRestore(event, items, anomalies) {
     return;
   }
 
-  // =====================================================
+  
   // ITEM MUST BE IN MAINTENANCE
-  // =====================================================
-
   if (item.status !== "maintenance") {
     anomalies.push({
       severity: "error",
@@ -492,10 +479,8 @@ function processRestore(event, items, anomalies) {
     return;
   }
 
-  // =====================================================
+  
   // RESTORE ITEM
-  // =====================================================
-
   item.status = "available";
 }
 module.exports = {
