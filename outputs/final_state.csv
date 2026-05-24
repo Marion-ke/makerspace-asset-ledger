@@ -1,0 +1,16 @@
+item_id,item_type,status,holder,due,condition
+cam-001,camera,checked_out,s112,2026-06-03T08:25:00.000Z,damaged
+cam-002,camera,available,,,damaged
+cam-003,camera,checked_out,s103,2026-06-03T06:13:00.000Z,scratched
+lap-001,laptop,checked_out,s115,2026-06-02T08:50:00.000Z,good
+lap-002,laptop,checked_out,s104,2026-06-02T06:30:00.000Z,damaged
+lap-003,laptop,available,,,worn
+mic-001,microphone,checked_out,s104,2026-06-04T06:35:00.000Z,good
+mic-002,microphone,checked_out,s105,2026-06-04T06:55:00.000Z,unusable
+trip-001,tripod,available,,,worn
+trip-002,tripod,checked_out,s110,2026-06-04T07:55:00.000Z,worn
+tab-001,tablet,available,,,scratched
+tab-002,tablet,available,,,scratched
+light-001,lighting,available,,,good
+light-002,lighting,checked_out,s204,2026-06-01T18:00,worn
+bad-001,camera,checked_out,,,good

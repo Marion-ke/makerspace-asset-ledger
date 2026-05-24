@@ -1,0 +1,30 @@
+severity,reason_code,event_id,item_id,actor_id,message
+error,BAD_INVENTORY_ROW,,bad-001,,Checked out item missing holder or due date
+error,BAD_EVENT_FORMAT,e045,,,Malformed timestamp
+error,BAD_EVENT_FORMAT,e020,,,Duplicate event ID
+error,ITEM_NOT_AVAILABLE,e002,cam-001,,Item is not available for checkout
+warning,CONDITION_WORSENED,e003,cam-002,,Student cannot improve condition
+warning,CONDITION_WORSENED,e006,lap-002,,Condition worsened
+error,ITEM_NOT_AVAILABLE,e007,lap-002,,Item is not available for checkout
+error,ITEM_NOT_AVAILABLE,e011,trip-001,,Item is not available for checkout
+warning,CONDITION_WORSENED,e012,mic-002,,Condition worsened
+error,RETURN_NOT_ALLOWED,e015,tab-001,,Item is not checked out
+error,ITEM_NOT_AVAILABLE,e017,tab-001,,Item is not available for checkout
+warning,STAFF_RETURN_USED,e020,tab-001,,Staff returned item on behalf of student
+warning,CONDITION_WORSENED,e020,tab-001,,Condition worsened
+error,UNKNOWN_LOAN_POLICY,e021,light-001,,Missing loan policy for item type
+warning,CONDITION_WORSENED,e023,trip-002,,Student cannot improve condition
+warning,CONDITION_WORSENED,e027,cam-001,,Condition worsened
+error,MAINTENANCE_NOT_ALLOWED,e029,cam-001,,Checked out item cannot enter maintenance
+warning,STAFF_RETURN_USED,e030,cam-001,,Staff returned item on behalf of student
+warning,CONDITION_WORSENED,e030,cam-001,,Condition worsened
+warning,CONDITION_WORSENED,e035,tab-002,,Unknown condition reported
+error,UNKNOWN_ITEM,e037,ghost-999,,Item does not exist
+error,ITEM_NOT_AVAILABLE,e040,mic-001,,Item is not available for checkout
+warning,STAFF_RETURN_USED,e041,lap-003,,Staff returned item on behalf of student
+warning,CONDITION_WORSENED,e041,lap-003,,Condition worsened
+error,ITEM_NOT_AVAILABLE,e042,mic-001,,Item is not available for checkout
+warning,CONDITION_WORSENED,e044,trip-001,,Condition worsened
+error,RESTORE_NOT_ALLOWED,e046,lap-001,,Item is not in maintenance
+error,ITEM_NOT_AVAILABLE,e047,bad-001,,Item is not available for checkout
+warning,CONDITION_WORSENED,e049,cam-002,,Condition worsened
