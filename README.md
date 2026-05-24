@@ -57,20 +57,6 @@ project-root/
 ├── TEST_PLAN.md
 └── AI_AND_ASSISTANCE.md
 
-# Installation
-
-```bash
-npm install
-```
-
----
-
-# Run The Project
-
-```bash
-node src/main.js
-```
-
 # Requirements
 
 - Node.js v18+
@@ -100,33 +86,21 @@ csv-writer
 - https://www.npmjs.com/package/csv-parser
 - https://www.npmjs.com/package/csv-writer
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript
-# installation guide
 
+# installation guide
 
 ## 1. Clone the Repository
 
-
 git clone my repolink
-
-
-
 
 ## 2. Open the Project Folder
 
-
 cd Makerspace-Asset-Ledger
-
-
 
 ## 3. Install Dependencies
 
-
 npm install
-
-
 
 ## 4. Run the Project
 
-
 node src/main.js
-
