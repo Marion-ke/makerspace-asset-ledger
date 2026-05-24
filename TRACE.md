@@ -1,0 +1,9 @@
+# Manual Trace
+
+| Event ID | Relevant State Before                                                               | Decision                                                                         | Relevant State After                               | Warning / Anomaly                     |
+| -------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------- | ------------------------------------- |
+| e006     | lap-002 checked_out by s202, condition=worn                                         | RETURN accepted, condition worsened to damaged, auto maintenance triggered       | status=maintenance, holder=null, condition=damaged | CONDITION_WORSENED                    |
+| e020     | tab-001 checked_out by s105, condition=good                                         | STAFF_RETURN accepted by staff member, condition worsened to worn                | status=available, holder=null, condition=worn      | STAFF_RETURN_USED, CONDITION_WORSENED |
+| e030     | cam-001 checked_out by s101, condition=worn                                         | STAFF_RETURN accepted, condition worsened to damaged, auto maintenance triggered | status=maintenance, holder=null, condition=damaged | STAFF_RETURN_USED, CONDITION_WORSENED |
+| e043     | tab-002 currently maintenance before later events due to earlier timestamp ordering | RESTORE accepted because item in maintenance                                     | status=available                                   | none                                  |
+| e049     | cam-002 checked_out by s119, condition=good                                         | RETURN accepted, condition worsened to worn                                      | status=available, holder=null, condition=worn      | CONDITION_WORSENED                    |
